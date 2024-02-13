@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+					xmlns:item="http://schemas.microsoft.com/winfx/2009/xaml">
+	<Style TargetType="Border">
+		<Setter Property="BackgroundColor" Value="{StaticResource DarkGray}" />
+		<Setter Property="Padding" Value="10"/>
+		<Setter Property="Stroke" Value="{StaticResource LightGray}" />
+		<Setter Property="StrokeThickness" Value="1" />
+	</Style>
+
+	<Style TargetType="Border" item:Key="BorderSmall">
+		<Setter Property="Margin" Value="10" />
+	</Style>
+
+	<Style TargetType="CollectionView">
+		<Setter Property="SelectionMode" Value="None" />
+	</Style>
+
+	<Style TargetType="DatePicker">
+		<Setter Property="FontAttributes" Value="Bold" />
+		<Setter Property="FontFamily" Value="OpenSansRegular" />
+		<Setter Property="FontSize" Value="14" />
+		<Setter Property="MinimumDate" Value="01/01/2023" />
+		<Setter Property="TextColor" Value="{StaticResource White}" />
+	</Style>
+
+	<Style TargetType="Entry">
+		<Setter Property="FontAttributes" Value="Bold" />
+		<Setter Property="FontFamily" Value="OpenSansRegular"/>
+		<Setter Property="FontSize" Value="14" />
+		<Setter Property="PlaceholderColor" Value="{StaticResource White}" />
+		<Setter Property="TextColor" Value="{StaticResource White}" />
+	</Style>
+
+	<Style TargetType="Entry" item:Key="EntrylExpenses">
+		<Setter Property="Margin" Value="2, 0, 0, 0" />
+		<Setter Property="TextColor" Value="{StaticResource Red}" />
+	</Style>
+
+	<Style TargetType="Frame">
+		<Setter Property="BackgroundColor" Value="{StaticResource Gray}" />
+		<Setter Property="BorderColor" Value="{StaticResource LightGray}" />
+		<Setter Property="CornerRadius" Value="0" />
+		<Setter Property="HeightRequest" Value="60" />
+		<Setter Property="Margin" Value="10" />
+		<Setter Property="Padding" Value="10" />
+	</Style>
+
+	<Style TargetType="Frame" item:Key="FrameDelete">
+		<Setter Property="BackgroundColor" Value="{StaticResource Red}" />
+		<Setter Property="Margin" Value="0" />
+		<Setter Property="WidthRequest" Value="120" />
+	</Style>
+
+	<Style TargetType="Frame" item:Key="FrameCurrency">
+		<Setter Property="BorderColor" Value="{StaticResource Transparent}" />
+		<Setter Property="HasShadow" Value="False" />
+		<Setter Property="HeightRequest" Value="55" />
+		<Setter Property="Margin" Value="0" />
+	</Style>
+
+	<Style TargetType="Grid">
+		<Setter Property="ColumnSpacing" Value="10" />
+	</Style>
+
+	<Style TargetType="Grid" item:Key="GridReport">
+		<Setter Property="Padding" Value="20" />
+		<Setter Property="RowSpacing" Value="20" />
+	</Style>
+
+	<Style TargetType="HorizontalStackLayout">
+		<Setter Property="HorizontalOptions" Value="End" />
+	</Style>
+
+	<Style TargetType="Image">
+		<Setter Property="HeightRequest" Value="40" />
+		<Setter Property="WidthRequest" Value="40" />
+	</Style>
+
+	<Style TargetType="Image" item:Key="ImageSmall">
+		<Setter Property="HeightRequest" Value="18" />
+		<Setter Property="Margin" Value="10" />
+		<Setter Property="WidthRequest" Value="18" />
+	</Style>
+
+	<Style TargetType="Label">
+		<Setter Property="FontAttributes" Value="Bold" />
+		<Setter Property="FontFamily" Value="OpenSansRegular" />
+		<Setter Property="FontSize" Value="14" />
+		<Setter Property="TextColor" Value="{StaticResource White}" />
+		<Setter Property="VerticalTextAlignment" Value="Center" />
+	</Style>
+
+	<Style TargetType="Label" item:Key="LabelEarned">
+		<Setter Property="Padding" Value="5" />
+		<Setter Property="HorizontalTextAlignment" Value="End" />
+		<Setter Property="TextColor" Value="{StaticResource Green}" />
+	</Style>
+
+	<Style TargetType="Label" item:Key="LabelEarnedAligned">
+		<Setter Property="Padding" Value="5" />
+		<Setter Property="TextColor" Value="{StaticResource Green}" />
+	</Style>
+
+	<Style TargetType="Label" item:Key="LabelExpenses">
+		<Setter Property="Padding" Value="5" />
+		<Setter Property="HorizontalTextAlignment" Value="End" />
+		<Setter Property="TextColor" Value="{StaticResource Red}" />
+	</Style>
+
+	<Style TargetType="Label" item:Key="LabelLarge">
+		<Setter Property="FontSize" Value="16" />
+		<Setter Property="HorizontalTextAlignment" Value="Center" />
+	</Style>
+
+	<Style TargetType="Label" item:Key="LabelTitle">
+		<Setter Property="FontSize" Value="18" />
+		<Setter Property="HorizontalTextAlignment" Value="Center" />
+	</Style>
+
+	<Style TargetType="Label" item:Key="LabelSmall">
+		<Setter Property="FontSize" Value="12" />
+		<Setter Property="HorizontalTextAlignment" Value="Center" />
+	</Style>
+
+	<Style TargetType="Label" item:Key="LabelTotalAmount">
+		<Setter Property="FontSize" Value="16" />
+		<Setter Property="HorizontalTextAlignment" Value="End" />
+		<Setter Property="Padding" Value="5" />
+	</Style>
+
+	<Style TargetType="Line">
+		<Setter Property="Stroke" Value="{StaticResource Purple}" />
+		<Setter Property="X1" Value="0" />
+		<Setter Property="Y1" Value="0" />
+		<Setter Property="Y2" Value="50" />
+	</Style>
+
+	<Style TargetType="Page" ApplyToDerivedTypes="True">
+		<Setter Property="BackgroundColor" Value="{StaticResource Gray}" />
+	</Style>
+
+	<Style TargetType="Shell" ApplyToDerivedTypes="True">
+		<Setter Property="Shell.BackgroundColor" Value="{StaticResource Gray}" />
+		<Setter Property="Shell.TitleColor" Value="{StaticResource White}" />
+	</Style>
+</ResourceDictionary>

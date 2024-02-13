@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+			 xmlns:controls="clr-namespace:MauiApp5.UI.Controls"
+			 xmlns:converters="clr-namespace:MauiApp5.UI.Converters"
+			 xmlns:item="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:models="clr-namespace:MauiApp5.Models"
+			 xmlns:sys="clr-namespace:System;assembly=netstandard"
+			 xmlns:viewModels="clr-namespace:MauiApp5.UI.ViewModels"
+             item:Class="MauiApp5.UI.Pages.ReportDetailsPage"
+			 item:DataType="viewModels:ReportDetailsViewModel"
+             Title="{Binding Worker.Name}">
+	<ContentPage.ToolbarItems>
+		<ToolbarItem Clicked="SaveButton_Clicked"
+					 IconImageSource="ok_icon.png" />
+	</ContentPage.ToolbarItems>
+	<Grid RowDefinitions="*, 55">
+		<Border Grid.Row="0">
+			<ScrollView>
+				<Grid ColumnDefinitions="80, *"
+					  RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto"
+					  Style="{StaticResource GridReport}">
+
+					<Grid.Resources>
+						<ResourceDictionary>
+							<converters:DateConverter item:Key="DateConverter"/>
+						</ResourceDictionary>
+					</Grid.Resources>
+
+					<Label Grid.Row="0"
+						   Grid.Column="0"
+						   Text="Datum:" />
+					<DatePicker Grid.Row="0"
+								Grid.Column="1"
+								MaximumDate="{item:Static sys:DateTime.Now}"
+								Date="{Binding Report.Date, Converter={StaticResource Key=DateConverter}, Mode=TwoWay}"/>
+
+					<Label Grid.Row="1"
+						   Grid.Column="0"
+						   Text="Satnica:" />
+					<controls:NumericEntry Grid.Row="1"
+									   Grid.Column="1"
+									   Text="{Binding Report.HourlyRate}" />
+
+					<Label Grid.Row="2"
+						   Grid.Column="0"
+						   Text="Radni sati:" />
+					<controls:NumericEntry Grid.Row="2"
+										   Grid.Column="1"
+										   Text="{Binding Report.WorkingHours}" />
+
+					<Label Grid.Row="3"
+						   Grid.Column="0"
+						   Text="Zarađeno:" />
+					<Label Grid.Row="3"
+						   Grid.Column="1"
+						   Style="{StaticResource LabelEarnedAligned}"
+						   Text="{Binding Report.Earned, StringFormat='{0:F2}'}" />
+
+					<Label Grid.Row="4"
+						   Grid.Column="0"
+						   Text="Utrošak:" />
+					<controls:NumericEntry Grid.Row="4"
+										   Grid.Column="1"
+										   Style="{StaticResource EntrylExpenses}"
+										   Text="{Binding Report.Expenses}" />
+
+					<Label Grid.Row="5"
+						   Grid.Column="0"
+						   Text="Ukupno:" />
+					<Label Grid.Row="5"
+						   Grid.Column="1"
+						   Style="{StaticResource LabelEarnedAligned}"
+						   Text="{Binding Report.TotalAmount, StringFormat='{0:F2}'}"
+						   TextColor="{Binding Report.TotalAmountColor}" />
+				</Grid>
+			</ScrollView>
+		</Border>
+		<controls:Currency Grid.Row="1" />
+	</Grid>
+</ContentPage>

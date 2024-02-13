@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:item="http://schemas.microsoft.com/winfx/2009/xaml"
+             item:Class="MauiApp5.UI.Controls.Currency">
+	<Grid ColumnDefinitions="*, 10, *"
+		  Padding="12">
+		<Frame Grid.Column="0"
+			   Style="{StaticResource FrameCurrency}">
+			<Label item:Name="LabelEUR"
+				   Style="{StaticResource LabelLarge}"
+				   Text="EUR" />
+			<Frame.GestureRecognizers>
+				<TapGestureRecognizer Tapped="ChangeCurrency" CommandParameter="" />
+			</Frame.GestureRecognizers>
+		</Frame>
+		<Line Grid.Column="1" />
+		<Frame Grid.Column="2"
+			   Style="{StaticResource FrameCurrency}">
+			<Label item:Name="LabelRSD"
+				   Style="{StaticResource LabelLarge}"
+				   Text="RSD" />
+			<Frame.GestureRecognizers>
+				<TapGestureRecognizer Tapped="ChangeCurrency" />
+			</Frame.GestureRecognizers>
+		</Frame>
+	</Grid>
+</ContentView>

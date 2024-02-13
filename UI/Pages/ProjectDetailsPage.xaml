@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+			 xmlns:controls="clr-namespace:MauiApp5.UI.Controls"
+			 xmlns:item="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:models="clr-namespace:MauiApp5.Models"
+			 xmlns:viewModels="clr-namespace:MauiApp5.UI.ViewModels"
+             item:Class="MauiApp5.UI.Pages.ProjectDetailsPage"
+			 item:DataType="viewModels:ProjectDetailsViewModel"
+             Title="{Binding Project.Name}">
+	<ContentPage.ToolbarItems>
+		<ToolbarItem Clicked="AddButton_Clicked"
+					 IconImageSource="add_icon.png" />
+	</ContentPage.ToolbarItems>
+	<Grid RowDefinitions="*, 55">
+		<Border Grid.Row="0">
+			<CollectionView ItemsSource="{Binding Project.Workers}">
+				<CollectionView.ItemTemplate>
+					<DataTemplate item:DataType="{item:Type models:Worker}">
+						<controls:AutoClosingSwipeView>
+							<SwipeView.LeftItems>
+								<SwipeItems>
+									<SwipeItemView Command="{Binding Source={RelativeSource AncestorType={item:Type viewModels:ProjectDetailsViewModel}}, Path=RemoveCommand}"
+											   CommandParameter="{Binding .}">
+										<Frame Style="{StaticResource FrameDelete}">
+											<Image Source="delete_icon.png" />
+										</Frame>
+									</SwipeItemView>
+								</SwipeItems>
+							</SwipeView.LeftItems>
+							<Frame>
+								<Grid ColumnDefinitions="40, *, 100">
+									<Image Grid.Column="0"
+									   Source="worker_icon.png" />
+									<Label Grid.Column="1"
+									   Text="{Binding Name}" />
+									<Label Grid.Column="2"
+										   Style="{StaticResource LabelTotalAmount}"
+										   Text="{Binding TotalAmount, StringFormat='{0:F2}'}"
+										   TextColor="{Binding TotalAmountColor}">
+										<Label.Triggers>
+											<DataTrigger Binding="{Binding TotalAmount}"
+														 TargetType="Label"
+														 Value="0">
+												<Setter Property="TextColor"
+														Value="{StaticResource White}" />
+											</DataTrigger>
+										</Label.Triggers>
+									</Label>
+								</Grid>
+								<Frame.GestureRecognizers>
+									<TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={item:Type viewModels:ProjectDetailsViewModel}}, Path=ShowDetailsCommand}"
+													  CommandParameter="{Binding .}" />
+								</Frame.GestureRecognizers>
+							</Frame>
+						</controls:AutoClosingSwipeView>
+					</DataTemplate>
+				</CollectionView.ItemTemplate>
+			</CollectionView>
+		</Border>
+		<controls:Currency Grid.Row="1" />
+	</Grid>
+</ContentPage>

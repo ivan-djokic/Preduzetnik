@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+			 xmlns:controls="clr-namespace:MauiApp5.UI.Controls"
+			 xmlns:item="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:models="clr-namespace:MauiApp5.Models"
+			 xmlns:viewModels="clr-namespace:MauiApp5.UI.ViewModels"
+			 item:Class="MauiApp5.UI.Pages.WorkerDetailsPage"
+			 item:DataType="viewModels:WorkerDetailsViewModel"
+             Title="{Binding Worker.Name}">
+	<ContentPage.ToolbarItems>
+		<ToolbarItem Clicked="AddButton_Clicked"
+					 IconImageSource="add_icon.png" />
+	</ContentPage.ToolbarItems>
+	<Grid RowDefinitions="50, *, 55">
+		<Label Grid.Row="0" 
+			   Style="{StaticResource LabelTitle}"
+			   Text="{Binding Worker.TotalAmount, StringFormat='{0:F2}'}"
+			   TextColor="{Binding Worker.TotalAmountColor}">
+			<Label.Triggers>
+				<DataTrigger Binding="{Binding Worker.TotalAmount}"
+							 TargetType="Label"
+							 Value="0">
+					<Setter Property="IsVisible"
+							Value="False" />
+				</DataTrigger>
+			</Label.Triggers>
+		</Label>
+		<Border Grid.Row="1">
+			<CollectionView ItemsSource="{Binding Worker.Reports}">
+				<CollectionView.ItemTemplate>
+					<DataTemplate item:DataType="{item:Type models:Report}">
+						<controls:AutoClosingSwipeView>
+							<SwipeView.LeftItems>
+								<SwipeItems>
+									<SwipeItemView Command="{Binding Source={RelativeSource AncestorType={item:Type viewModels:WorkerDetailsViewModel}}, Path=RemoveCommand}"
+											   CommandParameter="{Binding .}">
+										<Frame Style="{StaticResource FrameDelete}">
+											<Image Source="delete_icon.png" />
+										</Frame>
+									</SwipeItemView>
+								</SwipeItems>
+							</SwipeView.LeftItems>
+							<Frame>
+								<Grid ColumnDefinitions="30, *, *, *">
+									<VerticalStackLayout Grid.Column="0" >
+										<Label Style="{StaticResource LabelLarge}"
+											   Text="{Binding Path=Date, StringFormat='{0:dd}'}" />
+										<Label Style="{StaticResource LabelSmall}"
+											   Text="{Binding Path=Date, StringFormat='{0:MMM}'}" />
+									</VerticalStackLayout>
+									<HorizontalStackLayout Grid.Column="1">
+										<Image Source="clock_icon.png"
+											   Style="{StaticResource ImageSmall}" />
+										<Label Text="{Binding WorkingHours, StringFormat='{0:F2}'}" />
+									</HorizontalStackLayout>
+									<Label Grid.Column="2"
+										   Style="{StaticResource LabelEarned}" 
+										   Text="{Binding Earned, StringFormat='{0:F2}'}">
+										<Label.Triggers>
+											<DataTrigger Binding="{Binding Earned}"
+														 TargetType="Label"
+														 Value="0">
+												<Setter Property="IsVisible"
+														Value="False" />
+											</DataTrigger>
+										</Label.Triggers>
+									</Label>
+									<Label Grid.Column="3"
+										   Style="{StaticResource LabelExpenses}" 
+										   Text="{Binding Expenses, StringFormat='{0:F2}'}">
+										<Label.Triggers>
+											<DataTrigger Binding="{Binding Expenses}"
+														 TargetType="Label"
+														 Value="0">
+												<Setter Property="IsVisible"
+														Value="False" />
+											</DataTrigger>
+										</Label.Triggers>
+									</Label>
+								</Grid>
+								<Frame.GestureRecognizers>
+									<TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={item:Type viewModels:WorkerDetailsViewModel}}, Path=ShowDetailsCommand}"
+													  CommandParameter="{Binding .}" />
+								</Frame.GestureRecognizers>
+							</Frame>
+						</controls:AutoClosingSwipeView>
+					</DataTemplate>
+				</CollectionView.ItemTemplate>
+			</CollectionView>
+		</Border>
+		<controls:Currency Grid.Row="2" />
+	</Grid>
+</ContentPage>

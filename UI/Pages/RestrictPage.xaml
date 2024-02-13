@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+			 xmlns:item="http://schemas.microsoft.com/winfx/2009/xaml"
+			 item:Class="MauiApp5.UI.Pages.RestrictPage"
+             Title="Neizmirene obaveze">
+	<Border>
+		<Frame Grid.Row="0">
+			<Grid ColumnDefinitions="30, *"
+					  RowDefinitions="Auto, Auto">
+				<Image Grid.Column="0"
+						   Grid.RowSpan="2"
+						   Source="warning.png" />
+				<Label Grid.Column="1"
+						   Grid.Row="0"
+						   Text="Zabranjeno je korišćenje aplikacije" />
+				<Label Grid.Column="1"
+						   Grid.Row="1"
+						   Style="{StaticResource LabelSmall}"
+						   Text="Neophodna je dozvola administratora"
+						   HorizontalTextAlignment="Start"/>
+			</Grid>
+		</Frame>
+	</Border>
+</ContentPage>
